@@ -1,0 +1,33 @@
+# AgileX Robot Data Configuration - Complete Configuration
+
+data_sources:
+  - type: "AgilexRobot"
+    path: "/path/to/datasets/agilex/new_put_object_cabinet"
+    tasks: 
+      # - "place_bread_basket"
+      - "red"
+      - "greys"
+      - "yellow"
+      - "clean"
+      # - "put_object_cabinet"
+      # - "click_bell"
+      # - 'grab_roller'
+      # - "place_bread_basket"
+      
+    max_episodes_per_task: 999
+    # instruction: "Click the center of the bell on the table." 
+    instruction: "Pick up one bowl and place it in the center of the table, then stack the other on top."
+    # instruction: "Pick up one bowl and place it in the center of the table, then stack the other on top."
+      # - "Pick up one bread and place it in the bread basket."
+    
+    # AgilexRobot-specific options
+    use_qpos: false                     # Use eef_pose mode (recommended)
+
+output:
+  target_path: "/path/to/datasets/processed"
+  dataset_name: "agilex_new_put_object_cabinet_80"
+  normalization: "max_min"
+
+processing:
+  show_progress: true
+  verbose: true

@@ -1,0 +1,50 @@
+# Dual-path Diffusion Transformer Agent Configuration
+# No prompts, separate encoder/decoder for state/action processing
+defaults:
+  - features: resnet_gn
+  - _self_
+
+_target_: simhum.models.diffusion_dual.DiffusionTransformerAgent_Dual
+
+# Action and chunk settings
+ac_chunk: ${ac_chunk}
+ac_dim: ${task.ac_dim}  # Max action dimension (human)
+
+# Dimensional configuration (no hard-coding)
+robot_state_dim: 16
+human_state_dim: 44  
+robot_action_dim: 16
+human_action_dim: 44 # Dynamic from task config
+
+
+# Robot-only mode will be enabled after loading checkpoint
+# Robot-only mode configuration (references top-level config)
+robot_only_mode: ${robot_only_mode}    # Start with False, will be enabled by finetune.py
+use_human_adaptor: ${use_human_adaptor} # Use human_vision_adaptor for robot data
+dropout_wrist_rate: 0.0
+
+# Architecture parameters
+dropout: 0.1
+eval_diffusion_steps: 8
+feat_norm: null
+
+
+# Camera and observation settings
+imgs_per_cam: ${img_chunk}
+n_cams: ${task.n_cams}
+
+# Noise network configuration
+noise_net_kwargs:
+  activation: gelu
+  dim_feedforward: 1024
+  dropout: ${agent.dropout}
+  hidden_dim: 256
+  nhead: 8
+  num_blocks: 6
+  time_dim: 256
+
+# Observation settings  
+odim: ${task.obs_dim}
+share_cam_features: false
+train_diffusion_steps: 100
+use_obs: add_token

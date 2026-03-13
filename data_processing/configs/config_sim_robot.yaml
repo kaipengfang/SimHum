@@ -1,0 +1,27 @@
+# SimRobot Data Configuration - Complete Configuration
+
+data_sources:
+  - type: "SimRobot"
+    path: "/path/to/datasets/robotwin/origin_data/randomized"
+          # /path/to/datasets/robotwin/randomized
+          # /path/to/datasets/robotwin/clean/origin_data
+    tasks: 
+      # - "click_bell"
+      # - "grab_roller"
+      # - "place_bread_basket"
+      # - "put_object_cabinet"
+      # - "stack_bowls_two"
+    max_episodes_per_task: 500
+    # instruction: "Pick up one bowl and place it in the center of the table, then stack the other on top."
+    # instruction: "Click the center of the bell on the table." 
+    # "Pick up one bowl and place it in the center of the table, then stack the other on top."
+    align_to_human_coords: true       
+
+output:
+  target_path: "/path/to/datasets/processed"
+  dataset_name: "robotwin_random_click_bell_500"
+  normalization: "max_min"
+
+processing:
+  show_progress: true
+  verbose: true

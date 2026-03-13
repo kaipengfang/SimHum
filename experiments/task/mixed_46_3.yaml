@@ -1,0 +1,33 @@
+# Mixed Human-Robot Task Configuration (46D action/state, 3 cameras)
+# Supports hybrid data with both Robot (16D effective) and Human (46D) episodes
+
+_target_: simhum.task.BCTask
+obs_dim: 46     # Max state dimension (Human state)
+ac_dim: 46      # Max action dimension (Human action)  
+n_cams: ${len:${task.train_buffer.cam_indexes}}
+
+train_buffer:
+  _target_: simhum.replay_buffer.RobobufReplayBuffer
+  buffer_path: ${buffer_path}
+  transform: ${transform:${train_transform}}
+  n_test_trans: 2000
+  ac_chunk: ${ac_chunk}
+  mode: train
+  cam_indexes: [0,1,2]  # 3 cameras
+  goal_indexes: []
+  past_frames: ${add:${img_chunk},-1}
+  ac_dim: ${task.ac_dim}
+  use_relative_action: true
+  
+test_buffer:
+  _target_: simhum.replay_buffer.RobobufReplayBuffer
+  buffer_path: ${buffer_path}
+  transform: ${transform:preproc}
+  n_test_trans: 2000
+  ac_chunk: ${ac_chunk}
+  mode: test
+  cam_indexes: ${task.train_buffer.cam_indexes}
+  goal_indexes: ${task.train_buffer.goal_indexes}
+  past_frames: ${add:${img_chunk},-1}
+  ac_dim: ${task.ac_dim}
+  use_relative_action: ${task.train_buffer.use_relative_action}

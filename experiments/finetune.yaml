@@ -1,0 +1,58 @@
+# Copyright (c) Sudeep Dasari, 2023
+
+# This source code is licensed under the MIT license found in the
+# LICENSE file in the root directory of this source tree.
+
+
+defaults:
+  - agent: default
+  - task: end_effector_16_3
+  - trainer: bc
+  - _self_
+
+
+hydra:
+  run:
+    dir: bc_finetune/${exp_name}/wandb_${wandb.name}_${hydra:runtime.choices.task}_${hydra:runtime.choices.agent/features}_${now:%Y-%m-%d_%H-%M-%S}
+  sweep:
+    dir: ${base:}/../bc_finetune/${exp_name}/${now:%Y-%m-%d_%H-%M-%S}
+    subdir: run${hydra:job.num}_${hydra:runtime.choices.task}_${hydra:runtime.choices.agent/features}
+
+rt: ${hydra:runtime.choices.agent/features}
+
+exp_name: test
+mode: null  # resume or finetune
+checkpoint_path: null  # Path to checkpoint file for resume/finetune
+batch_size: 250
+num_workers: 24
+lr: 0.0005
+max_iterations: 60000
+eval_freq: 5000
+save_freq: 5000
+schedule_freq: 1
+devices: 1
+seed: 292285
+
+buffer_path: ./buffer.pkl
+ac_chunk: null
+img_chunk: 1  # number of image timesteps to use (including current one)
+train_transform: advanced
+# Human/Robot data balance configuration
+human_ratio: null                     # Control human:robot data ratio (e.g., 0.3 = 30% human, 70% robot)
+# Robot-only mode configuration
+robot_only_mode: false                # Enable robot-only fine-tuning mode
+use_human_adaptor: true               # Use human_vision_adaptor (robot data is visually similar to human data)
+robot_only_frozen_sim_adaptor: false     # Freeze adaptor parameters in robot-only mode
+robot_only_frozen_human_adaptor: true
+robot_only_frozen_encoder: false     # Freeze encoder parameters in robot-only mode
+robot_only_frozen_dit: false
+
+
+wandb:
+  name: null
+  project: simhum
+  group: ${exp_name}
+  sweep_name_prefix: eval
+  debug: False
+  entity: null  # Set to your WandB entity
+

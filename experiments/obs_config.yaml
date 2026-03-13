@@ -1,0 +1,5 @@
+imgs: ['head_cam', 'left_cam', 'right_cam']
+transform:
+  _target_: simhum.transforms.get_transform_by_name
+  name: preproc
+

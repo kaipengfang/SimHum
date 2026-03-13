@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integrated Data Acquisition System v1.0</title>
+  <link rel="stylesheet" href="css/style.css?v=18" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-brand">
+      <span class="brand-icon">📡</span>
+      <span class="brand-title">Integrated Data Acquisition System</span>
+      <span class="brand-version">v1.0</span>
+    </div>
+  </header>
+  <div class="grid-root">
+
+    <!-- ══════════════ Left: Control Panel ══════════════ -->
+    <section class="panel" id="panel-control">
+      <h2 class="panel-title">🎮 Control Center</h2>
+
+      <!-- Image Server -->
+      <div class="ctrl-section">
+        <div class="ctrl-section-title">Image Server</div>
+        <div class="row-between ctrl-status-row">
+          <span class="label">Status</span>
+          <span class="status-badge" id="server-status-badge">Not connected</span>
+        </div>
+        <button class="btn btn-primary ctrl-btn-grow" id="btn-toggle-server">Connect to Server</button>
+      </div>
+
+      <!-- Data Collection Settings -->
+      <div class="ctrl-section">
+        <div class="ctrl-section-title">Data Collection Settings</div>
+        <div class="field">
+          <label class="field-label" for="input-save-path">Save path</label>
+          <input class="input" id="input-save-path" type="text" value="data/integrated_recordings" />
+        </div>
+        <div class="field">
+          <label class="field-label" for="input-desc">Task description</label>
+          <input class="input" id="input-desc" type="text" value="test" />
+        </div>
+      </div>
+
+      <!-- Keyboard Controls -->
+      <div class="ctrl-section ctrl-section-grow">
+        <div class="ctrl-section-title">Keyboard Control</div>
+        <div class="keyboard-help">
+          <div class="kbd-item"><kbd>Space</kbd><span>Record / Stop (3s)</span></div>
+          <div class="kbd-item"><kbd>D</kbd><span>Discard episode</span></div>
+        </div>
+        <div class="ctrl-section-footer">
+          <button class="btn btn-success btn-half" id="btn-start-capture" disabled>Startup System</button>
+          <button class="btn btn-danger btn-half"  id="btn-stop-capture"  disabled>Stop the system</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ══════════════ Center: Image Display ══════════════ -->
+    <section class="panel" id="panel-image">
+      <h2 class="panel-title">📷 Image Feed</h2>
+      <div class="image-container">
+        <img id="camera-img" src="" alt="" style="display:none;" />
+        <div id="image-placeholder">Waiting to connect to the image server...</div>
+      </div>
+    </section>
+
+    <!-- ══════════════ Right: Terminal Log ══════════════ -->
+    <section class="panel" id="panel-viz">
+      <h2 class="panel-title">📋 System Log</h2>
+      <div class="log-box" id="log-box"></div>
+    </section>
+
+    <!-- ══════════════ Right Column: Big Status + Info Grid + Episode + Chart ══════════════ -->
+    <section class="panel" id="panel-status">
+
+      <!-- Big Status Box -->
+      <div class="big-status-box" id="big-status-box">
+        <div id="big-status-main">Waiting for system start</div>
+        <div id="big-status-sub"></div>
+      </div>
+
+      <!-- Status Info Grid -->
+      <div class="status-grid">
+        <div class="status-item">
+          <span class="status-label">Recording<br>status</span>
+          <span class="status-value" id="lbl-recording-status">Waiting for start</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">Frames</span>
+          <span class="status-value" id="lbl-frame-count">0</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">System<br>status</span>
+          <span class="status-value" id="lbl-system-status">Standby</span>
+        </div>
+        <div class="status-item">
+          <span class="status-label">ADB</span>
+          <span class="status-value" id="lbl-adb-status">Unknown</span>
+        </div>
+      </div>
+
+      <!-- Episode Control -->
+      <div class="episode-box">
+        <div class="episode-title">Episode Index</div>
+        <div class="episode-controls">
+          <button class="episode-btn" id="btn-episode-dec">−</button>
+          <input class="episode-input" id="input-episode" type="number" min="0" value="0" />
+          <button class="episode-btn" id="btn-episode-inc">+</button>
+        </div>
+      </div>
+
+      <!-- Hand Position Chart -->
+      <div class="chart-wrapper">
+        <h3 class="chart-title">Hand position tracking</h3>
+        <canvas id="xyz-chart"></canvas>
+      </div>
+
+    </section>
+
+  </div><!-- /grid-root -->
+
+  <script src="js/api.js?v=2"></script>
+  <script src="js/image.js?v=2"></script>
+  <script src="js/chart.js?v=2"></script>
+  <script src="js/main.js?v=5"></script>
+</body>
+</html>

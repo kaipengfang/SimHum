@@ -1,0 +1,31 @@
+# Robot-only Task Configuration (16D action/state, 3 cameras)
+# For robot-only fine-tuning with pure robot data
+
+_target_: simhum.task.BCTask
+obs_dim: 16     # Robot state dimension
+ac_dim: 16      # Robot action dimension
+n_cams: ${len:${task.train_buffer.cam_indexes}}
+
+train_buffer:
+  _target_: simhum.replay_buffer.RobobufReplayBuffer
+  buffer_path: ${buffer_path}
+  transform: ${transform:${train_transform}}
+  n_test_trans: 500
+  ac_chunk: ${ac_chunk}
+  mode: train
+  cam_indexes: [0,1,2]  # 3 cameras
+  goal_indexes: []
+  past_frames: ${add:${img_chunk},-1}
+  ac_dim: ${task.ac_dim}
+
+test_buffer:
+  _target_: simhum.replay_buffer.RobobufReplayBuffer
+  buffer_path: ${buffer_path}
+  transform: ${transform:preproc}
+  n_test_trans: 500
+  ac_chunk: ${ac_chunk}
+  mode: test
+  cam_indexes: ${task.train_buffer.cam_indexes}
+  goal_indexes: ${task.train_buffer.goal_indexes}
+  past_frames: ${add:${img_chunk},-1}
+  ac_dim: ${task.ac_dim}

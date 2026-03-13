@@ -1,0 +1,48 @@
+# Mixed Robot+Human Data Configuration - Complete Configuration
+
+data_sources:
+  # Simulation robot data source
+  - type: "SimRobot"
+    path: "/path/to/datasets/robotwin/origin_data/randomized"
+    tasks:
+      - "stack_bowls_two"
+      # - "grab_roller"
+      # - "click_bell"
+      # - "place_bread_basket"
+      # - "put_object_cabinet"
+    max_episodes_per_task: 400
+    # instruction: "Click the center of the bell on the table." 
+    # instruction: "Pick up the bread on the table and place it into the basket."
+    instruction: "Pick up one bowl and place it in the center of the table, then stack the other on top."
+    
+    # SimRobot-specific options
+    align_to_human_coords: true         # Enable coordinate system alignment
+    
+  # Human-collected data source
+  - type: "HumanCollect"
+    path: "/path/to/datasets/human_data/stack_bowls_two_1104_subsets"
+    tasks:
+      # - "put_object_cabinet_1130"
+      # - "place_bread_basket_1126"
+      # - "grab_roller_1125"
+      # - "click_bell_1124"
+      # - "click_bell"
+      # - "place_bread_basket"
+      - "subset_400"
+    max_episodes_per_task: 500
+    # instruction: "Click the center of the bell on the table." 
+    # instruction: "Pick up the bread on the table and place it into the basket."
+    instruction: "Pick up one bowl and place it in the center of the table, then stack the other on top."
+    
+    # HumanCollect-specific options
+    human_output_format: 44             # Full 46-dim format
+    
+
+output:
+  target_path: "/path/to/datasets/processed/"
+  dataset_name: "hybrid_stack_bowls_two_SH800"
+  normalization: "max_min"
+
+processing:
+  show_progress: true
+  verbose: true

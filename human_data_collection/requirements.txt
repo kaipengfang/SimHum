@@ -1,0 +1,58 @@
+# Web Framework
+fastapi==0.135.1
+uvicorn==0.41.0
+starlette==0.52.1
+
+# Image Processing
+opencv-python==4.11.0.86
+pyrealsense2==2.56.5.9235
+
+# Communication
+pyzmq==27.0.0
+aiohttp==3.12.13
+aiortc==1.13.0
+aiohttp-cors==0.8.1
+aioice==0.10.1
+
+# VR/3D
+vuer[all]==0.0.35rc18
+params-proto==2.13.2
+waterbear==2.6.8
+pytransform3d==3.14.1
+
+# Robot Control
+# Note: pinocchio (pin) must be installed via pip (includes hpp-fcl/coal):
+#   pip install pin==3.7.0
+pin==3.7.0
+pin-pink==3.3.0
+qpsolvers[open_source_solvers]==4.7.1
+loop-rate-limiters==1.1.2
+
+# Data Processing
+numpy==2.2.6
+h5py==3.14.0
+scipy==1.15.3
+ruptures==1.1.10
+
+# Visualization
+matplotlib==3.10.3
+plotly==6.6.0
+
+# Media
+av>=14.0.0
+
+# Deep Learning
+torch==2.7.1
+
+# Optimization
+nlopt==2.9.1
+
+# Web View
+pywebview==6.1
+
+# Configuration
+pyyaml==6.0.2
+
+# SSL
+pyOpenSSL==25.1.0
+cryptography==45.0.4

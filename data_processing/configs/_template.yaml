@@ -1,0 +1,35 @@
+# Complete Configuration Template - Contains all available configuration keys
+
+data_sources:
+  - type: "SimRobot"                    # Data processor type [SimRobot, AgilexRobot, HumanCollect]
+    path: "/path/to/data"               # Data path (required)
+    tasks: []                           # Task list (default: [])
+    max_episodes_per_task: null         # Max episodes per task (default: null, process all)
+    instruction: ""                     # Custom instruction text (default: "", auto-generated)
+    
+    # SimRobot-specific options
+    align_to_human_coords: false        # Whether to align to human coordinate system (default: false)
+    
+    # AgilexRobot-specific options
+    use_qpos: false                     # Whether to use joint position mode (default: false, uses eef_pose)
+    
+    # HumanCollect-specific options
+    human_output_format: 46             # Human data output format [46, 44, 16] (default: 46)
+
+output:
+  target_path: "/path/to/output"        # Output path (required)
+  dataset_name: "my_dataset"            # Dataset name (default: mixed_N)
+  normalization: "max_min"              # Normalization method [max_min, gaussian] (default: max_min)
+
+processing:
+  show_progress: true                   # Show progress bar (default: false)
+  verbose: true                         # Verbose output (default: false)
+  shuffle_episodes: false               # Shuffle episodes randomly (default: false)
+
+# Notes:
+# 1. Required fields: data_sources[].type, data_sources[].path, output.target_path
+# 2. All other fields have default values and can be omitted
+# 3. Source-type-specific options only take effect for the corresponding type
+# 4. human_output_format only applies to HumanCollect data sources
+# 5. align_to_human_coords only applies to SimRobot
+# 6. use_qpos only applies to AgilexRobot

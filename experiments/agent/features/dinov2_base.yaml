@@ -1,0 +1,12 @@
+# Copyright (c) 2024
+
+# This source code is licensed under the MIT license found in the
+# LICENSE file in the root directory of this source tree.
+
+# DinoV2-Base configuration
+# embed_dim: 768
+# n_tokens: 1 (with avg_pool=True) or 256 (with avg_pool=False)
+
+_target_: simhum.models.dinov2.DinoV2
+size: 'base'
+avg_pool: True  # True: use CLS token (1 token), False: use patch tokens (256 tokens)
