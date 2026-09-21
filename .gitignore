@@ -54,3 +54,6 @@ logs/
 !human_data_collection/**/*.txt
 !human_data_collection/**/*.md
 !human_data_collection/**/*.gitignore
+
+# README figures
+!assets/*.png
