@@ -1,4 +1,6 @@
-<h1 align="center">Sim-and-Human Co-training for Data-Efficient<br>and Generalizable Robotic Manipulation</h1>
+<h1 align="center">Sim-and-Human Co-training for Data-Efficient<br>and Scene-Generalizable Bimanual Manipulation</h1>
+
+<p align="center"><b>🎉 Accepted by CoRL 2026</b></p>
 
 <p align="center">
   <a href="https://kaipengfang.github.io/"><b>Kaipeng Fang</b></a><sup>1</sup>&nbsp;&nbsp;
@@ -7,9 +9,9 @@
   <a href="https://jimzai.github.io/"><b>Ji Zhang</b></a><sup>2</sup>&nbsp;&nbsp;
   <a href="https://ppengzeng.github.io/"><b>Pengpeng Zeng</b></a><sup>3</sup>&nbsp;&nbsp;
   <br>
-  <a href="https://lianligao.github.io/"><b>Lianli Gao</b></a><sup>1</sup>&nbsp;&nbsp;
   <a href="https://cfm.uestc.edu.cn/~shenht/"><b>Heng Tao Shen</b></a><sup>3</sup>&nbsp;&nbsp;
-  <a href="https://jingkuansong.github.io/"><b>Jingkuan Song</b></a><sup>3,4</sup>
+  <a href="https://jingkuansong.github.io/"><b>Jingkuan Song</b></a><sup>3,4</sup>&nbsp;&nbsp;
+  <a href="https://lianligao.github.io/"><b>Lianli Gao</b></a><sup>1†</sup>
 </p>
 
 <p align="center">
@@ -17,9 +19,12 @@
   <sup>2</sup>SWJTU&nbsp;&nbsp;
   <sup>3</sup>Tongji University&nbsp;&nbsp;
   <sup>4</sup>Shanghai Innovation Institute
+  <br>
+  <sup>†</sup>Corresponding author
 </p>
 
 <p align="center">
+  <a href="https://www.corl.org/"><img src="https://img.shields.io/badge/CoRL-2026-9D1616.svg" alt="CoRL 2026"></a>
   <a href="https://arxiv.org/abs/2601.19406"><img src="https://img.shields.io/badge/arXiv-2601.19406-b31b1b.svg" alt="arXiv"></a>
   <a href="https://kaipengfang.github.io/sim-and-human/"><img src="https://img.shields.io/badge/Project-Page-blue.svg" alt="Project Page"></a>
   <a href="https://github.com/kaipengfang/SimHum"><img src="https://img.shields.io/badge/Code-GitHub-black.svg" alt="Code"></a>
@@ -27,10 +32,10 @@
 </p>
 
 <p align="center">
-  <img src="https://kaipengfang.github.io/sim-and-human/resources/images/Introduction.png" width="80%">
+  <img src="assets/fig1.png" alt="SimHum overview: the sim-to-real visual gap, the human-to-robot embodiment gap, and how Sim-and-Human co-training combines the two sources" width="80%">
 </p>
 
-SimHum co-trains on **simulated robot trajectories** and **real-world human demonstrations** to learn manipulation policies that are both data-efficient and generalizable. It outperforms the real-only baseline by up to **40%** under the same data budget, and achieves **62.5% OOD success with only 80 real demonstrations** (a **7.1x** data efficiency gain).
+SimHum co-trains a bimanual manipulation policy on **simulated robot trajectories** and **real-world human demonstrations**, then fine-tunes it on a small real-robot dataset. Simulation supplies robot-valid actions, and human data supplies real-world observations. With only **80 real-robot episodes per task**, SimHum reaches **62.5% success on held-out OOD scenes** across four bimanual tabletop tasks, **53.7% higher than Real only** in absolute success rate. Under matched data-collection time, it improves over the best single-source pre-training baseline by **35.0%** in absolute success rate.
 
 ---
 
@@ -202,11 +207,12 @@ SimHum uses a **dual-path architecture** with separate vision adaptors for simul
 ## Citation
 
 ```bibtex
-@article{fang2025simhum,
-  title={Sim-and-Human Co-training for Data-Efficient and Generalizable Robotic Manipulation},
-  author={Fang, Kaipeng and Liang, Weiqing and Li, Yuyang and Zhang, Ji and Zeng, Pengpeng and Gao, Lianli and Shen, Heng Tao and Song, Jingkuan},
-  journal={arXiv preprint arXiv:2601.19406},
-  year={2025}
+@inproceedings{fang2026simhum,
+  title     = {Sim-and-Human Co-training for Data-Efficient and Scene-Generalizable Bimanual Manipulation},
+  author    = {Fang, Kaipeng and Liang, Weiqing and Li, Yuyang and Zhang, Ji and Zeng, Pengpeng and
+               Shen, Heng Tao and Song, Jingkuan and Gao, Lianli},
+  booktitle = {10th Annual Conference on Robot Learning},
+  year      = {2026},
 }
 ```
 
