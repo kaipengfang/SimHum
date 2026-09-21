@@ -1,7 +1,10 @@
 <h1 align="center">Sim-and-Human Co-training for Data-Efficient<br>and Scene-Generalizable Bimanual Manipulation</h1>
 
 <p align="center">
-  <img src="assets/accepted_corl2026.svg" alt="🎉 Accepted by CoRL 2026" height="44">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/accepted_corl2026_dark.svg">
+    <img src="assets/accepted_corl2026.svg" alt="🎉 Accepted by CoRL 2026" height="26">
+  </picture>
 </p>
 
 <p align="center">
