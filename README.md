@@ -1,6 +1,8 @@
 <h1 align="center">Sim-and-Human Co-training for Data-Efficient<br>and Scene-Generalizable Bimanual Manipulation</h1>
 
-<p align="center"><b>🎉 Accepted by CoRL 2026</b></p>
+<p align="center">
+  <img src="assets/accepted_corl2026.svg" alt="🎉 Accepted by CoRL 2026" height="44">
+</p>
 
 <p align="center">
   <a href="https://kaipengfang.github.io/"><b>Kaipeng Fang</b></a><sup>1</sup>&nbsp;&nbsp;
@@ -11,7 +13,7 @@
   <br>
   <a href="https://cfm.uestc.edu.cn/~shenht/"><b>Heng Tao Shen</b></a><sup>3</sup>&nbsp;&nbsp;
   <a href="https://jingkuansong.github.io/"><b>Jingkuan Song</b></a><sup>3,4</sup>&nbsp;&nbsp;
-  <a href="https://lianligao.github.io/"><b>Lianli Gao</b></a><sup>1†</sup>
+  <a href="https://lianligao.github.io/"><b>Lianli Gao</b></a><sup>1</sup>
 </p>
 
 <p align="center">
@@ -19,8 +21,6 @@
   <sup>2</sup>SWJTU&nbsp;&nbsp;
   <sup>3</sup>Tongji University&nbsp;&nbsp;
   <sup>4</sup>Shanghai Innovation Institute
-  <br>
-  <sup>†</sup>Corresponding author
 </p>
 
 <p align="center">
