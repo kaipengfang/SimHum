@@ -31,6 +31,7 @@
   <a href="https://arxiv.org/abs/2601.19406"><img src="https://img.shields.io/badge/arXiv-2601.19406-b31b1b.svg" alt="arXiv"></a>
   <a href="https://kaipengfang.github.io/sim-and-human/"><img src="https://img.shields.io/badge/Project-Page-blue.svg" alt="Project Page"></a>
   <a href="https://github.com/kaipengfang/SimHum"><img src="https://img.shields.io/badge/Code-GitHub-black.svg" alt="Code"></a>
+  <a href="https://huggingface.co/datasets/Here123/SimHum"><img src="https://img.shields.io/badge/Dataset-Hugging%20Face-FFD21E.svg" alt="Dataset on Hugging Face"></a>
   <a href="#license"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License"></a>
 </p>
 
